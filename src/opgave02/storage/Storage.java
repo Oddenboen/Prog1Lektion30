@@ -1,8 +1,6 @@
 package opgave02.storage;
 
-import opgave02.models.Actor;
-import opgave02.models.Movie;
-import opgave02.models.TVSerie;
+import opgave02.models.*;
 
 import java.util.ArrayList;
 
@@ -10,6 +8,18 @@ public class Storage {
     private ArrayList<Movie> movies = new ArrayList<Movie>();
     private ArrayList<TVSerie> series = new ArrayList<>();
     private ArrayList<Actor> actors = new ArrayList<Actor>();
+    private ArrayList<Director> directors = new ArrayList<>();
+
+  /*  public Director getDirector(String navn) {
+
+        return directors.get(directors.indexOf(director));
+    }
+
+    public void addDirector(Director director) {
+        if (!directors.contains(director)) {
+            directors.add(director);
+        }
+    } */
 
     public void addMovie(Movie movie) {
         movies.add(movie);
@@ -21,5 +31,54 @@ public class Storage {
 
     public void addTVSerie(TVSerie serie) {
         series.add(serie);
+    }
+
+    public void printAllMovies() {
+        for (Movie movie : movies) {
+            System.out.println(movie);
+        }
+    }
+
+    public void printAllSeries() {
+        for (TVSerie serie : series) {
+            System.out.println(serie);
+        }
+    }
+
+    public ArrayList<Movie> getMoviesOfDirector(String name) {
+        ArrayList<Movie> movies = new ArrayList<>();
+        for (Movie movie : this.movies) {
+            if (movie.getDirector().getName() == name) {
+                movies.add(movie);
+            }
+        }
+        return movies;
+    }
+
+    public ArrayList<TVSerie> getSeriesOfGenre(Genre genre) {
+        ArrayList<TVSerie> series = new ArrayList<>();
+        for (TVSerie serie : this.series) {
+            for (Genre genres : serie.getGenres()) {
+                if (genres == genre) {
+                    series.add(serie);
+                }
+            }
+        }
+        return series;
+    }
+
+    public ArrayList<TVSerie> getSeriesOfGenre(Genre[] genres) {
+        ArrayList<TVSerie> series = new ArrayList<>();
+        for (TVSerie serie : this.series) {
+            for (int i = 0; i < genres.length; i++) {
+                for (int j = 0; j < serie.getGenres().length; j++) {
+                    if (genres[i] == serie.getGenres()[j]) {
+                        series.add(serie);
+                    }
+                }
+
+            }
+        }
+        return series;
     }
 }

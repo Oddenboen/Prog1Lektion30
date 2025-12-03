@@ -2,16 +2,26 @@ package opgave02.models;
 
 import java.util.ArrayList;
 
-public class TVSerie {
-    private String title;
+public class TVSerie extends Show{
     private int numberOfSeasons;
-    private Genre[] genres;
-    private ArrayList<Actor> cast;
 
     public TVSerie(String title, int numberOfSeasons, Genre[] genres, ArrayList<Actor> cast) {
-        this.title = title;
+        super(title,genres,cast);
         this.numberOfSeasons = numberOfSeasons;
-        this.genres = genres;
-        this.cast = cast;
+    }
+
+    @Override
+    public String toString() {
+        String retur = "";
+        retur += "Titel: " + getTitle() + " Antal sæsoner: " + numberOfSeasons + " Genre:";
+
+        for (Genre genre : getGenres()) {
+            retur+= " " + genre;
+        }
+        retur += " Skuespillere:";
+        for (Actor actor : getCast()) {
+            retur+= " " + actor;
+        }
+        return retur;
     }
 }

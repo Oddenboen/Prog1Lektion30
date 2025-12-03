@@ -10,6 +10,12 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Storage storage = initStorage();
+        storage.printAllMovies();
+        storage.printAllSeries();
+        System.out.println(storage.getMoviesOfDirector("George Walton Lucas Jr."));
+        System.out.println(storage.getSeriesOfGenre(Genre.COMEDY));
+        Genre[] test = {Genre.COMEDY, Genre.ADVENTURE};
+        System.out.println(storage.getSeriesOfGenre(test));
     }
 
     private static Storage initStorage() {
