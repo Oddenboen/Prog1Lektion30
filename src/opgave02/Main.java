@@ -12,10 +12,11 @@ public class Main {
         Storage storage = initStorage();
         storage.printAllMovies();
         storage.printAllSeries();
-        System.out.println(storage.getMoviesOfDirector("George Walton Lucas Jr."));
-        System.out.println(storage.getSeriesOfGenre(Genre.COMEDY));
-        Genre[] test = {Genre.COMEDY, Genre.ADVENTURE};
+       // System.out.println(storage.getMoviesOfDirector("George Walton Lucas Jr."));
+       // System.out.println(storage.getSeriesOfGenre(Genre.COMEDY));
+        Genre[] test = {Genre.COMEDY, Genre.ROMANCE};
         System.out.println(storage.getSeriesOfGenre(test));
+        System.out.println(storage.getShowsOfGenre(Genre.ACTION));
     }
 
     private static Storage initStorage() {

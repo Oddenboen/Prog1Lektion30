@@ -72,7 +72,7 @@ public class Storage {
         for (TVSerie serie : this.series) {
             for (int i = 0; i < genres.length; i++) {
                 for (int j = 0; j < serie.getGenres().length; j++) {
-                    if (genres[i] == serie.getGenres()[j]) {
+                    if (genres[i] == serie.getGenres()[j] && !series.contains(serie)) {
                         series.add(serie);
                     }
                 }
@@ -80,5 +80,24 @@ public class Storage {
             }
         }
         return series;
+    }
+
+    public ArrayList<Show> getShowsOfGenre(Genre genre) {
+        ArrayList<Show> shows = new ArrayList<>();
+        for (TVSerie serie : this.series) {
+            for (Genre genres : serie.getGenres()) {
+                if (genres == genre) {
+                    shows.add(serie);
+                }
+            }
+        }
+        for (Movie movie : this.movies) {
+            for (Genre genres : movie.getGenres()) {
+                if (genres == genre) {
+                    shows.add(movie);
+                }
+            }
+        }
+        return shows;
     }
 }
